@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ops! Algo deu errado</title>
+  <style>
+    :root {
+      --laranja-principal: #f97316;   /* laranja base */
+      --laranja-escuro:    #ea580c;   /* hover */
+      --laranja-claro:     #fb923c;   /* gradiente/ícone */
+      --laranja-suave:     #fff7ed;   /* fundos suaves */
+      --laranja-borda:     #fed7aa;   /* bordas */
+      --texto-escuro:      #431407;   /* marrom escuro quente */
+      --texto-medio:       #7c2d12;   /* marrom médio */
+      --branco:            #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--branco);
+      border-radius: 24px;
+      padding: 48px 36px 40px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow:
+        0 20px 60px rgba(249, 115, 22, 0.18),
+        0 4px 16px rgba(249, 115, 22, 0.08);
+      border: 1px solid var(--laranja-borda);
+      animation: subir 0.5s ease-out;
+    }
+
+    @keyframes subir {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .icone {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--laranja-claro), var(--laranja-principal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35);
+      animation: pulsar 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulsar {
+      0%, 100% { box-shadow: 0 8px 24px rgba(249, 115, 22, 0.35); }
+      50%      { box-shadow: 0 8px 36px rgba(249, 115, 22, 0.55); }
+    }
+
+    .icone svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--branco);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: var(--texto-escuro);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .mensagem {
+      font-size: 1rem;
+      color: var(--texto-medio);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .destaque-reembolso {
+      display: inline-block;
+      background: var(--laranja-suave);
+      border: 1px solid var(--laranja-borda);
+      color: var(--laranja-escuro);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin: 0 2px;
+    }
+
+    .aviso {
+      font-size: 0.85rem;
+      color: var(--texto-medio);
+      background: var(--laranja-suave);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin: 24px 0 32px;
+      line-height: 1.5;
+    }
+
+    .botao {
+      display: block;
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--branco);
+      background: var(--laranja-principal);
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.35);
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .botao:hover {
+      background: var(--laranja-escuro);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.45);
+    }
+
+    .botao:active {
+      transform: scale(0.98);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+
+    .botao:focus-visible {
+      outline: 3px solid var(--laranja-claro);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="alert">
+    <div class="icone" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="7" x2="12" y2="13"></line>
+        <line x1="12" y1="16.5" x2="12.01" y2="16.5"></line>
+      </svg>
+    </div>
+
+    <h1>Ops! Algo deu errado</h1>
+
+    <p class="mensagem">
+      Não conseguimos concluir sua operação agora.
+    </p>
+
+    <p class="mensagem">
+      Fique tranquilo: o valor será <span class="destaque-reembolso">reembolsado em até 3 horas</span>.
+    </p>
+
+    <div class="aviso">
+      O reembolso pode levar até 3 horas para aparecer na sua conta ou fatura, dependendo do seu banco.
+    </div>
+
+    <!-- Botão agora é um link: redireciona para o dashboard -->
+    <a
+      class="botao"
+      href="https://privacyellencristina.vercel.app/"
+      role="button"
+    >
+      Tentar novamente
+    </a>
+  </main>
+</body>
+</html>
